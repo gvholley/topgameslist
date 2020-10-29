@@ -1,10 +1,30 @@
 class GamesController < ApplicationController
 
   def index
-    @games = Game.limit(10)
+    @games = Game.all
+  end
+
+  def create
+    @game = Game.new(game_params)
   end
 
   def show
-    @game = Game.find(params[:id])
+  end
+
+  def search
+    @games = Game.search(params[:query])
+  end
+
+  def new
+    @game = Game.new
+  end
+
+  def edit
+  end
+
+private
+
+  def game_params
+    params.require(:game).permit(:name)
   end
 end
