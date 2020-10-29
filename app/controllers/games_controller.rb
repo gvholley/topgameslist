@@ -12,7 +12,8 @@ class GamesController < ApplicationController
   end
 
   def search
-    @games = Game.search(params[:query])
+    @games = Game.find(params[:id])
+    game = GiantBomb::Game.name
   end
 
   def new

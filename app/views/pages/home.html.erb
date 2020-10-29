@@ -1,0 +1,18 @@
+    <div class="search-font"><h1>Build your Collection</h1></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <%= form_tag search_path class: "row", method: :get do %>
+          <div class="col-12 col-sm pr-sm-0">
+            <%= text_field_tag :game,
+              params[:game],
+              class: "form-control input-lg",
+              id: "typed-text" %>
+          </div>
+          <div class="input-group-btn ml-3">
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
