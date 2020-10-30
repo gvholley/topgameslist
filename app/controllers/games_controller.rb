@@ -13,7 +13,7 @@ class GamesController < ApplicationController
 
   def search
     @games = Game.find_by(params[:id])
-    search = GiantBomb::Search.new
+    search = GiantBomb::Search.new().query(:query)
   end
 
   def new
