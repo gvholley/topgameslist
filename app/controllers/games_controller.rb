@@ -1,27 +1,19 @@
 class GamesController < ApplicationController
 
   def index
-    @games = Game.all
-  end
-
-  def create
-    @game = Game.new(game_params)
+  @games = Game.all.order('created_at DESC')
+  @games = @games.search(params[:query]) if params[:query].present?
   end
 
   def show
+    @game = GiantBomb::Game.name
   end
 
   def search
-    @games = Game.find_by(params[:id])
-    search = GiantBomb::Search.new().query(:query)
+    @games = GiantBomb::Search.new().query(params[:query]).resources('game').limit(5).fetch
+    redirect_to index_path
   end
 
-  def new
-    @game = Game.new
-  end
-
-  def edit
-  end
 
 private
 
