@@ -1,11 +1,11 @@
     <div class="search-font"><h1>Build your Collection</h1></div>
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <%= form_tag search_path class: "row", method: :get do %>
+        <div class="col-md-12 row">
+          <%= form_tag index_path, method: :get do %>
           <div class="col-12 col-sm pr-sm-0">
-            <%= text_field_tag :game,
-              params[:game],
+            <%= text_field_tag :query,
+              params[:query],
               class: "form-control input-lg",
               id: "typed-text" %>
           </div>
