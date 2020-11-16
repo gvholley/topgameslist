@@ -4,7 +4,7 @@
         <div class="col-md-12 row">
           <%= form_tag index_path, method: :get do %>
           <div class="col-12 col-sm pr-sm-0">
-            <%= text_field_tag :query,
+            <%= text_field_tag [:query],
               params[:query],
               class: "form-control input-lg",
               id: "typed-text" %>
