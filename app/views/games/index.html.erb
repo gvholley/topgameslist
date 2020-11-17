@@ -1,6 +1,12 @@
-<h1>Uh...</h1>
+Results
 <ul>
   <% @games.each do |game| %>
-    <li><%= game %></li>
+  <div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+    <h2><%= game['name'] %></h2>
+    <p><%= game['deck'] %></p>
+  </div>
+</div>
   <% end %>
 </ul>
