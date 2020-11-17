@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
 
   def index
-  @games = GiantBomb::Search.new().query(params[:query]).resources('game').limit(100).fields('name').fetch
+  @games = GiantBomb::Search.new().query(params[:query]).resources('game').limit(100).fetch
   end
 
 
