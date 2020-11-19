@@ -5,6 +5,23 @@ class GamesController < ApplicationController
   end
 
 
+  def library
+    type = params[:type]
+
+    if type == "add"
+      current_user.library_additions << @game
+      redirect_to library_index_path, notice: "Game was added to your library"
+
+    elsif type == "remove"
+      current_user.library_additions.delete(@game)
+      redirect_to root_path, notice: "Game was removed from your library"
+    else
+      # Type missing, nothing happens
+      redirect_to game_path(@game), notice: "Looks like nothing happened. Try once more!"
+    end
+  end
+
+
 private
 
   def game_params

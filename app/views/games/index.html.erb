@@ -12,6 +12,17 @@ Results
     <p><%= game['platforms'][0]['name'] %></p>
     <% end %>
     <p><%= game['original_release_date'].to_s[0..3] %></p>
+
+    <% if user_added_to_library?(current_user, game) %>
+
+            <%= link_to 'Remove from library', add_game_path(game, type: "remove"), method: :put %>
+
+          <% else %>
+            <%= link_to 'Add to library', add_game_path(game, type: "add"), method: :put %>
+          <% end %>
+
+
+
   </div>
 </div>
   <% end %>
