@@ -11,11 +11,11 @@ class GamesController < ApplicationController
 
   def library
     type = params[:type]
-    @game = Game.new(name: 'name')
+    @game = Game.new(game_params)
 
     if type == "add"
       current_user.library_additions << @game
-      redirect_to library_index_path, notice: "Game was added to your library"
+      redirect_to user_library_path(current_user), notice: "Game was added to your library"
 
     elsif type == "remove"
       current_user.library_additions.delete(@game)
@@ -30,6 +30,6 @@ class GamesController < ApplicationController
 private
 
   def game_params
-    params.require(:game).permit(:name, :search, :query)
+    params.require(:game).permit(:name, :id)
   end
 end

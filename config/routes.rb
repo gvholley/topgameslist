@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/search', to: 'games#search', as: :search
   get '/games', to: 'games#index', as: :index
+  get '/user/:id', to: 'user#show'
+  get '/user/:id/library', to: 'library#index', as: :user_library
 end
