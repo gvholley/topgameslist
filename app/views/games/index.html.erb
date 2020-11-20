@@ -6,6 +6,7 @@ Results
   <div class="container">
     <h2><%= game['name'] %></h2>
     <p><%= game['deck'] %></p>
+    <p><%= game['id'] %></p>
     <% if game['platforms'] === nil %>
     <p>Platform Unknown</p>
     <% else %>
@@ -15,12 +16,13 @@ Results
 
     <% if user_added_to_library?(current_user, game) %>
 
-            <%= link_to 'Remove from library', add_game_path(game, type: "remove"), method: :put %>
+            <%= link_to 'Remove from library', add_game_path(game['id'], type: "remove"), method: :put %>
 
           <% else %>
-            <%= link_to 'Add to library', add_game_path(game, type: "add"), method: :put %>
+            <%= link_to 'Add to library', add_game_path(game['id'], type: "add"), method: :put %>
           <% end %>
 
+<%= link_to 'Game profile', game_path(game['id']) %>
 
 
   </div>

@@ -4,6 +4,10 @@ class GamesController < ApplicationController
   @games = GiantBomb::Search.new().query(params[:query]).resources('game').limit(100).fetch
   end
 
+  def show
+  @game = GiantBomb::Game.detail(params[:id])
+  end
+
 
   def library
     type = params[:type]
