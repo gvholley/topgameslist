@@ -1,11 +1,16 @@
 <h1>Library</h1>
 
 <% if @library_games.exists? %>
+<% @library_games.each do |game| %>
     <div class="container">
-      <%= render @library_games, game: @game %>
+      <p><%= game.name%></p>
+      <p><%= game.id %></p>
+      <p><%= game.deck %></p>
     </div>
+  <% end %>
   <% else %>
   <div class="container">
     <div class="message-body">You haven't added any games to your library yet. <%= link_to 'Add some', root_path %>.</div>
   </div>
   <% end %>
+<%#= User.find(params[:id]).email %>

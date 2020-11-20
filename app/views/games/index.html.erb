@@ -16,10 +16,10 @@ Results
 
     <% if user_added_to_library?(current_user, game) %>
 
-            <%= link_to 'Remove from library', add_game_path(game['id'], type: "remove"), method: :put %>
+            <%= link_to 'Remove from library', add_game_path(game['id'], type: "remove", game: game), method: :put %>
 
           <% else %>
-            <%= link_to 'Add to library', add_game_path(game['id'], type: "add"), method: :put %>
+            <%= link_to 'Add to library', add_game_path(game['id'], type: "add", game: game), method: :put %>
           <% end %>
 
 <%= link_to 'Game profile', game_path(game['id']) %>
