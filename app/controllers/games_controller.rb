@@ -11,7 +11,7 @@ class GamesController < ApplicationController
 
   def library
     type = params[:type]
-    @game = GiantBomb::Game
+    @game = Game.new(name: 'name')
 
     if type == "add"
       current_user.library_additions << @game
