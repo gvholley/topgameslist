@@ -5,7 +5,9 @@
     <div class="container">
       <p><%= game.name%></p>
       <p><%= game.id %></p>
-      <p><%= game.deck %></p>
+      <p><%= game['deck'] %></p>
+      <p><%= game['original_release_date'].to_s[0..3] %></p>
+
     </div>
   <% end %>
   <% else %>
