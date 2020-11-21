@@ -1,12 +1,11 @@
 <h1>Library</h1>
 
 <% if @library_games.exists? %>
-<% @library_games.each do |game| %>
+<% @library_games.map(&:to_giant_bomb_game).each do |game| %>
     <div class="container">
       <p><%= game.name%></p>
       <p><%= game.id %></p>
-      <p><%= game['deck'] %></p>
-      <p><%= game['original_release_date'].to_s[0..3] %></p>
+      <p><%= game.deck %></p>
 
     </div>
   <% end %>
