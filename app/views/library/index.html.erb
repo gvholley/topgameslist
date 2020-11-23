@@ -1,17 +1,40 @@
 <h1>Library</h1>
-
+<div class="cards">
 <% if @library_games.exists? %>
 <% @library_games.map(&:to_giant_bomb_game).each do |game| %>
-    <div class="container">
-      <p><%= game.name%></p>
-      <p><%= game.id %></p>
-      <p><%= game.deck %></p>
 
+<div class="wrapper">
+    <div class="product-img">
+      <%= image_tag game.image['medium_url'], class: "cover"%>
     </div>
+    <div class="product-info">
+      <div class="product-text">
+        <h1><%= game.name %></h1>
+        <% if game.platforms === nil %>
+    <h2>Platform Unknown (<%= game.original_release_date.to_s[0..3] %>)</h2>
+    <% else %>
+    <h2><%= game.platforms[0]['name'] %> (<%= game.original_release_date.to_s[0..3] %>)</h2>
+    <% end %>
+        <p><%= game.deck %> </p>
+      </div>
+      <div class="product-price-btn">
+        <% if user_added_to_library?(current_user, game) %>
+
+            <button type="button"><%= link_to 'Remove from library', add_game_path(game.id, type: "remove", game: game), method: :put %> </button>
+
+          <% else %>
+           <button type="button"> <%= link_to 'Add to library', add_game_path(game.id, type: "add", game: game), method: :put %> </button>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
   <% end %>
+  </div>
+
   <% else %>
   <div class="container">
     <div class="message-body">You haven't added any games to your library yet. <%= link_to 'Add some', root_path %>.</div>
   </div>
   <% end %>
-<%#= User.find(params[:id]).email %>
+
